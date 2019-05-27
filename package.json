@@ -1,0 +1,33 @@
+{
+  "name": "koyomi.matsueda",
+  "version": "1.0.0",
+  "description": "Koyomi portfolio site",
+  "main": "index.js",
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "start": "webpack-dev-server --config ./webpack.config.js --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bugster10/koyomi.matsueda.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bugster10/koyomi.matsueda/issues"
+  },
+  "homepage": "https://github.com/bugster10/koyomi.matsueda#readme"
+}
