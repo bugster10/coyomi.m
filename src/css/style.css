@@ -1,0 +1,10 @@
+#intro {
+    background-color:#D8D8D8;
+    height: 50vh;
+}
+
+#intro-container {
+    background-image: url('../media/alien3.png');
+    background-position: center center;
+    background-size: 100% 100%;
+}
