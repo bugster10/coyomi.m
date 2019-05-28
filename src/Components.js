@@ -79,26 +79,24 @@ class AboutMe extends React.Component {
 class MyWorks extends React.Component {
     render(){
         return(
-            <div id="myworks" className="row p-5">
-                    <div className="col-4">
-                        <h3>Here are a few things:</h3>
-                        <li>Spooky things.</li>
-                        <li>Happy things.</li>
-                        <li>Weird things.</li>
-                        <li>Cool things.</li>
-                    </div>
-                    <div id="myworks-img" className="col-8">
-                    <Slideshow/>
-                    </div>
-
+            <div className="container">
+            <div id="myworks" className="row">
+                        <h3 id="what-thing">Here is a <span></span> thing.</h3>
             </div>
+                    <div id="myworks-img" className="row">
+                        <div id="myworks-col" className="col">
+                    <Slideshow/>
+                        </div>
+                    </div>
+            </div>
+
         );
     };
 };
 
 const Slideshow = () => {
     return (
-      <Fade {...fadeProperties}>
+    <Fade {...fadeProperties}>
         <div className="each-fade">
           <div className="image-container">
             <img src="../src/media/myworks1.png" />
@@ -114,8 +112,21 @@ const Slideshow = () => {
             <img src="../src/media/myworks3.png" />
           </div>
         </div>
+        <div className="each-fade">
+          <div className="image-container">
+            <img src="../src/media/myworks4.png" />
+          </div>
+        </div>
+        <div className="each-fade">
+          <div className="image-container">
+            <img src="../src/media/myworks5.png" />
+          </div>
+        </div>
       </Fade>
     )
-  }
+}
+
+$("#what-thing").text("TEST");
+alert($("#what-thing"));
 
 export {App};

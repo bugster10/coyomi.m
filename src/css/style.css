@@ -18,24 +18,24 @@ html, body {
     background-position: no-repeat center;
 }
 
+#myworks-col {
+    max-width:85vh;
+    width: 50%;
+    margin: 0 auto;
+}
+
 #myworks-img img {
     height:100%;
     width:100%;
 }
 
 .react-slideshow-container {
-    border:5px solid black;
+    border:10px solid black;
 }
 
-/* .each-fade > div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-size: cover;
-    height: 100%;
-    width: 100%;
-
-  } */
+.react-slideshow-fade-wrapper {
+    max-width:100%;
+}
   
   .each-fade .image-container {
     width: 100%;
