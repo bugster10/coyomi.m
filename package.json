@@ -2,12 +2,16 @@
   "name": "koyomi.matsueda",
   "version": "1.0.0",
   "description": "Koyomi portfolio site",
-  "main": "index.js",
+  "main": "dist/index.js",
   "dependencies": {
+    "gh-pages": "^2.0.1",
+    "html-webpack-plugin": "^3.2.0",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "webpack-dev-server": "^3.4.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
@@ -20,18 +24,25 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "watch": "webpack --watch",
-    "start": "webpack-dev-server --config ./webpack.config.js --mode development"
+    "start": "webpack-dev-server --mode development",
+    "transpile": "babel src -d dist --copy-files",
+    "prepublishOnly": "npm run transpile",
+    "build": "webpack --mode production",
+    "deploy": "gh-pages -d examples/dist",
+    "publish-demo": "npm run build && npm run deploy"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bugster10/koyomi.matsueda.git"
+    "url": "git+https://bugster10.github.io/coyomi.m/.git"
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/bugster10/koyomi.matsueda/issues"
+  "peerDependencies": {
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0"
   },
-  "homepage": "https://github.com/bugster10/koyomi.matsueda#readme"
+  "bugs": {
+    "url": "https://bugster10.github.io/coyomi.m/issues"
+  },
+  "homepage": "https://bugster10.github.io/coyomi.m/"
 }
