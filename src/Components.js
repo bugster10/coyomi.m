@@ -35,7 +35,7 @@ class App extends React.Component {
             <MyWorks/>
             <MySkills/>
             <Contact/>
-            {/* <Footer/> */}
+            <Footer/>
             </React.Fragment>
         );
     };
@@ -61,11 +61,11 @@ class Intro extends React.Component {
 class AboutMe extends React.Component {
     render() {
         return(
-            <div id="aboutme" className="row p-15">
+            <div id="aboutme" className="row p-15 text-dark">
                 <div className="col card bg-aboutme-card text-center">
-                    <h1 className="card-header"><strong>ABOUT ME</strong></h1>
+                    <h1 className="card-header"><strong>I'm COYOMI (暦)</strong></h1>
                     <p className="card-body">
-                        <h4 className="card-title">I'm a Illustrator from Japan.</h4>
+                        <h4 className="card-title">An Illustrator from Japan.</h4>
                         Currently living in Tokyo and finishing up College.
                         I taught myself English by playing games and watching movies. <small className="">(especially Tarantino and Marvel)</small>
                         <br></br>
@@ -80,9 +80,9 @@ class AboutMe extends React.Component {
 class MyWorks extends React.Component {
     render(){
         return(
-            <div id="myworks">
-            <div className="mx-auto row container p-3 d-flex justify-content-center">
-                        <h4 className="bg-warning border border-light rounded p-2">I can draw <span id="what-thing-container" className="border border-dark text-center bg-dark text-white"><span id="what-thing">SPOOKY</span></span> things.</h4>
+            <div id="myworks" className="bg-dark">
+            <div className="mx-auto row container p-2 d-flex justify-content-center">
+                        <h6 className="text-nowrap bg-light border border-light rounded p-2">I can draw <span id="what-thing-container" className="border rounded border-secondary text-center bg-dark text-white"><span id="what-thing">SPOOKY</span></span> things</h6>
             </div>
                     <div id="myworks-img" className="row">
                         <div id="myworks-col" className="col">
@@ -123,27 +123,22 @@ class MySkills extends React.Component {
     render(){
         return(
             <div id="myskills" className="row">
-                <div className="col-6 text-center pt-5 ml-2">
-                    <h4 className="text-dark"><strong>MY SKILLS:</strong></h4>
-                    <div className="jumbotron">
-                <p>
-                I'm always looking to use my skills for freelance work or commissions.
+                <div id="myskills-text-col" className="col-6 text-center pt-4-alt ml-2 pr-5-alt">
+                    <div id="myskills-card">
+                    <h4 className="text-dark"><strong>SKILLS:</strong></h4>
+                    <div className="card mx-2">
+                <p className="text-dark">
+                Comics, posters and some web design. 
+                I'm always looking for freelance work or commissions.
                 <br/>
                 <small>(Also looking to get into 3D modeling / graphic design!)</small>
                 </p>
+                    </div>
                     </div>
                 </div>
                 <div id="myskills-col" className="col-6">
                 <div id="skill" className="text-center">{this.state.skill}</div>
                 <img id="goth" src="../src/media/mpOVvlu.png" />
-                <footer id="footer" className="footer bg-dark">
-                <div className="container">
-                    <a href="#" className="fa fa-facebook"></a>
-                    <a href="#" className="fa fa-twitter"></a>
-
-                </div>
-
-            </footer>
                 </div>
             </div>
         );
@@ -153,13 +148,13 @@ class MySkills extends React.Component {
 class Contact extends React.Component {
     render(){
         return(
-            <div id="contact" className="container d-flex justify-content-center">
+            <div id="contact" className="container d-flex justify-content-center mt-4">
                 <div id="contact-container" className="card text-white text-center p-4">
                 Think you could use my help?
                 <br/>
                 Send me a message.
                 <br/>
-                <a href="mailto:bugster111@gmail.com"><button type="button" className="btn btn-info">&#9993; MESSAGE ME</button></a>
+                <a id="msgme" href="mailto:bugster111@gmail.com"><button type="button" className="btn btn-info">&#9993; MESSAGE ME</button></a>
                 </div>
             </div>
         );
@@ -169,10 +164,11 @@ class Contact extends React.Component {
 class Footer extends React.Component {
     render(){
         return(
-            <footer id="footer" className="footer bg-dark">
+            <footer id="footer" className="footer bg-dark mt-2">
                 <div className="container">
-                    <a href="#" className="fa fa-facebook"></a>
-                    <a href="#" className="fa fa-twitter"></a>
+                    <div><a href="https://twitter.com/Ma2_Ereki" className="fa text-white fa-twitter">@Ma2_Ereki</a></div>
+                    <div><a href="https://www.instagram.com/yomico_543/" className="fa text-white fa-instagram"> yomico_543</a></div>
+                    <div><a href="mailto:bugster111@gmail.com" className="fa text-white fa-envelope"> bugster111@gmail.com</a></div>
 
                 </div>
 

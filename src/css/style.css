@@ -19,11 +19,6 @@ html, body {
 }
 
 #myworks {
-    background: rgb(146,49,184);
-    background: -moz-linear-gradient(45deg, rgba(146,49,184,1) 41%, rgba(32,11,181,1) 81%);
-    background: -webkit-linear-gradient(45deg, rgba(146,49,184,1) 41%, rgba(32,11,181,1) 81%);
-    background: linear-gradient(45deg, rgba(146,49,184,1) 41%, rgba(32,11,181,1) 81%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#9231b8",endColorstr="#200bb5",GradientType=1);
     padding-bottom: 10px;
 }
 
@@ -42,10 +37,22 @@ html, body {
     height:100%;
 }
 
-#myskills-col{
+#myskills-col {
     left:40%;
     position:absolute;
     min-width: 60%;
+}
+
+#myskills-text-col {
+    min-height: 275px;
+    height:275px;
+    z-index:1000;
+}
+
+#myskills-card {
+    left:100px;
+    max-width:400px;
+    float:right;
 }
 
 #goth {
@@ -57,7 +64,12 @@ html, body {
 
 #what-thing-container {
     display: inline-block;
-    width:100px;
+    width:140px;
+}
+
+#what-thing {
+    position:relative;
+    font-size:28px;
 }
 
 #contact-container {
@@ -69,7 +81,7 @@ html, body {
     float: left;
     position: absolute;
     left: 10px;
-    top: 45px;
+    top: 35px;
     z-index: 1000;
     background-color: rgb(105, 0, 0);
     padding: 5px;
@@ -92,16 +104,17 @@ border-bottom: solid 5px transparent;
 border-top: solid 5px transparent;
 }
 
-
-#footer {
-    position:absolute;
-    right:50%;
-}
+.pt-4-alt {
+    padding-top: 2.3rem !important;
+  }
 
 .speech-bubble {
 	position: relative;
 	background: #00aabb;
 	border-radius: .4em;
+}
+.card {
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 .speech-bubble:after {
@@ -171,6 +184,9 @@ border-top: solid 5px transparent;
     padding-bottom:2vh;
 }
 
+.pr-5-alt {
+    padding-right: 4%;
+}
 
 /* Key frames */
 @keyframes fadein {
@@ -203,5 +219,5 @@ border-top: solid 5px transparent;
 }
 
 a {
-    text-decoration: none !important;
+    text-decoration: none;
 }
