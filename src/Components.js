@@ -62,15 +62,17 @@ class AboutMe extends React.Component {
     render() {
         return(
             <div id="aboutme" className="row p-15 text-dark">
-                <div className="col card bg-aboutme-card text-center">
+                <div className="col card bg-aboutme-card text-center text-dark">
                     <h1 className="card-header"><strong>I'm COYOMI (暦)</strong></h1>
-                    <p className="card-body">
+                    <div className="card-body">
                         <h4 className="card-title">An Illustrator from Japan.</h4>
+                        <p className="thick-font">
                         Currently living in Tokyo and finishing up College.
                         I taught myself English by playing games and watching movies. <small className="">(especially Tarantino and Marvel)</small>
                         <br></br>
                         ...And I just really like to draw... things...
-                    </p>
+                        </p>
+                    </div>
                 </div>
             </div>
         );
@@ -168,8 +170,6 @@ class Footer extends React.Component {
                 <div className="container">
                     <div><a href="https://twitter.com/Ma2_Ereki" className="fa text-white fa-twitter">@Ma2_Ereki</a></div>
                     <div><a href="https://www.instagram.com/yomico_543/" className="fa text-white fa-instagram"> yomico_543</a></div>
-                    <div><a href="mailto:bugster111@gmail.com" className="fa text-white fa-envelope"> bugster111@gmail.com</a></div>
-
                 </div>
 
             </footer>

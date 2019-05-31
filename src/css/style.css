@@ -14,8 +14,11 @@ html, body {
 }
 
 #aboutme {
-    background-image: url('../media/dogs3.png');
-    background-position: no-repeat center;
+    background-image: url('../media/resdogs2.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 85%;
+    background-color: rgb(204, 51, 46);
 }
 
 #myworks {
@@ -174,7 +177,11 @@ border-top: solid 5px transparent;
 }
 
 .bg-aboutme-card {
-    background: rgba(230, 230, 230, 0.95);
+    background: rgba(230, 230, 230, 0.85);
+}
+
+.thick-font{
+    color:black;
 }
 
 .p-15 {

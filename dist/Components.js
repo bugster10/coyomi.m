@@ -123,16 +123,18 @@ function (_React$Component3) {
         id: "aboutme",
         className: "row p-15 text-dark"
       }, _react["default"].createElement("div", {
-        className: "col card bg-aboutme-card text-center"
+        className: "col card bg-aboutme-card text-center text-dark"
       }, _react["default"].createElement("h1", {
         className: "card-header"
-      }, _react["default"].createElement("strong", null, "I'm COYOMI (\u66A6)")), _react["default"].createElement("p", {
+      }, _react["default"].createElement("strong", null, "I'm COYOMI (\u66A6)")), _react["default"].createElement("div", {
         className: "card-body"
       }, _react["default"].createElement("h4", {
         className: "card-title"
-      }, "An Illustrator from Japan."), "Currently living in Tokyo and finishing up College. I taught myself English by playing games and watching movies. ", _react["default"].createElement("small", {
+      }, "An Illustrator from Japan."), _react["default"].createElement("p", {
+        className: "thick-font"
+      }, "Currently living in Tokyo and finishing up College. I taught myself English by playing games and watching movies. ", _react["default"].createElement("small", {
         className: ""
-      }, "(especially Tarantino and Marvel)"), _react["default"].createElement("br", null), "...And I just really like to draw... things...")));
+      }, "(especially Tarantino and Marvel)"), _react["default"].createElement("br", null), "...And I just really like to draw... things..."))));
     }
   }]);
 
@@ -316,10 +318,7 @@ function (_React$Component7) {
       }, "@Ma2_Ereki")), _react["default"].createElement("div", null, _react["default"].createElement("a", {
         href: "https://www.instagram.com/yomico_543/",
         className: "fa text-white fa-instagram"
-      }, " yomico_543")), _react["default"].createElement("div", null, _react["default"].createElement("a", {
-        href: "mailto:bugster111@gmail.com",
-        className: "fa text-white fa-envelope"
-      }, " bugster111@gmail.com"))));
+      }, " yomico_543"))));
     }
   }]);
 
