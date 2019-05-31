@@ -28,33 +28,79 @@ const fadeProperties = {
     indicators: true
 };
 
-const thingArr = [
+const enThings = [
     'SPOOKY','COOL','WEIRD',
     'COMFY', 'BLOODY'
 ];
 
+const jpThings = [
+    '怖い','オシャレ','不気味',
+    '心地いい', '血塗れ'
+];
+
+const enDict = {
+    a1:"I'm COYOMI (暦)",
+    a2:"An Illustrator from Japan.",
+    a3:"Currently living in Tokyo and finishing up College. I taught myself English by playing games and watching movies.",
+    a4: "(especially Tarantino and Marvel)",
+    a5: "...And I just really like to draw... things...",
+    mw1: "I can draw ",
+    mw2: enThings,
+    mw3: " things",
+    ms1: "SKILLS",
+    ms2: "Comics, posters and some web design. I'm always looking for freelance work or commissions.",
+    ms3: "(Also looking to get into 3D modeling / graphic design!)",
+    c1: "Think you could use my help?",
+    c2: "Send me a message.",
+    c3: "MESSAGE ME",
+};
+
+const jpDict = {
+    a1:"I'm COYOMI (暦)",
+    a2:"東京住み作者です。",
+    a3:"尚、美大学をやっている. ゲームや海外映画のお陰で英語を独学しました。",
+    a4: "(特にタランティーノとマーベル)",
+    a5: "...それと、絵を描くが好き",
+    mw1: "例えば、",
+    mw2: jpThings,
+    mw3: " 物も作れる",
+    ms1: "得意分野",
+    ms2: "コミック、ポスターと少しウェブデザイン。何時でもフリーランス仕事と依頼絵に頼んでいいです。",
+    ms3: "(グラフィックデザインもCGIも興味があります！)",
+    c1: "頼みがあると思いますか？",
+    c2: "メッセージ送ってね",
+    c3: "メッセージ送る",
+};
 
 class App extends React.Component {
-    // May have issues with false
-    // Perhaps use null or empty str
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         // introContainer: false,
-    //         // introId: false,
-    //     };
-    // }
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: localStorage['LANG'] == 'EN' ? enDict : jpDict
+        };
+        this.changeLang = this.changeLang.bind(this);
+    }
+
+    changeLang(e){
+        localStorage['LANG'] = e;
+        this.setState(localStorage['LANG'] == 'EN' ? {data:enDict} : {data:jpDict})
+    }
+    componentWillMount(){
+
+    }
     render() {
-        // if (this.state.isLoading) return (
-        //     <Intro introClass="row"/>
-        // );
         return(
             <React.Fragment>
             {/* <Intro/> */}
-            <AboutMe/>
-            <MyWorks/>
-            <MySkills/>
-            <Contact/>
+            <div id="change-language" className="bg-light">
+            <a className="btn-lang" onClick={() => this.changeLang('EN')}>EN</a>
+            <span>|</span>
+            <a className="btn-lang" onClick={() => this.changeLang('JP')}>JP</a>
+            </div>
+            <AboutMe a1={this.state.data.a1} a2={this.state.data.a2} a3={this.state.data.a3} a4={this.state.data.a4} a5={this.state.data.a5}/>
+            <MyWorks mw1={this.state.data.mw1} mw2={this.state.data.mw2} mw3={this.state.data.mw3}/>
+            <MySkills ms1={this.state.data.ms1} ms2={this.state.data.ms2} ms3={this.state.data.ms3}/>
+            <Contact c1={this.state.data.c1} c2={this.state.data.c2} c3={this.state.data.c3}/>
             <Footer/>
             </React.Fragment>
         );
@@ -83,14 +129,13 @@ class AboutMe extends React.Component {
         return(
             <div id="aboutme" className="row p-15 text-dark">
                 <div className="col card bg-aboutme-card text-center text-dark">
-                    <h1 className="card-header"><strong>I'm COYOMI (暦)</strong></h1>
+                    <h1 className="card-header"><strong>{this.props.a1}</strong></h1>
                     <div className="card-body">
-                        <h4 className="card-title">An Illustrator from Japan.</h4>
+                        <h4 className="card-title">{this.props.a2}</h4>
                         <p className="thick-font">
-                        Currently living in Tokyo and finishing up College.
-                        I taught myself English by playing games and watching movies. <small className="">(especially Tarantino and Marvel)</small>
+                        {this.props.a3}<small>{this.props.a4}</small>
                         <br></br>
-                        ...And I just really like to draw... things...
+                        {this.props.a5}
                         </p>
                     </div>
                 </div>
@@ -104,7 +149,7 @@ class MyWorks extends React.Component {
         return(
             <div id="myworks" className="bg-dark">
             <div className="mx-auto row container p-2 d-flex justify-content-center">
-                        <h6 className="text-nowrap bg-light border border-light rounded p-2">I can draw <span id="what-thing-container" className="border rounded border-secondary text-center bg-dark text-white"><span id="what-thing">SPOOKY</span></span> things</h6>
+                        <h6 className="text-nowrap bg-light border border-light rounded p-2">{this.props.mw1}<span id="what-thing-container" className="border rounded border-secondary text-center bg-dark text-white"><span id="what-thing">{this.props.mw2[0]}</span></span>{this.props.mw3}</h6>
             </div>
                     <div id="myworks-img" className="row">
                         <div id="myworks-col" className="col">
@@ -121,6 +166,7 @@ const skillsArr = [
     'Comics', 'Posters', 'Web',
     '日本語', 'English',
 ]
+
 let counter = 0;
 class MySkills extends React.Component {
     constructor(props) {
@@ -129,7 +175,7 @@ class MySkills extends React.Component {
             index: 0,
             skill: skillsArr[0],
         };
-    }
+    };
     componentDidMount(){
         this.intervalId = setInterval(() => {
             counter = counter < 4 ? counter + 1 : 0;
@@ -147,13 +193,12 @@ class MySkills extends React.Component {
             <div id="myskills" className="row">
                 <div id="myskills-text-col" className="col-6 text-center pt-4-alt ml-2 pr-5-alt">
                     <div id="myskills-card">
-                    <h4 className="text-dark"><strong>SKILLS:</strong></h4>
+                    <h4 className="text-dark"><strong>{this.props.ms1}</strong></h4>
                     <div className="card mx-2">
                 <p className="text-dark">
-                Comics, posters and some web design. 
-                I'm always looking for freelance work or commissions.
+                {this.props.ms2}
                 <br/>
-                <small>(Also looking to get into 3D modeling / graphic design!)</small>
+                <small>{this.props.ms3}</small>
                 </p>
                     </div>
                     </div>
@@ -172,11 +217,11 @@ class Contact extends React.Component {
         return(
             <div id="contact" className="container d-flex justify-content-center mt-4">
                 <div id="contact-container" className="card text-white text-center p-4">
-                Think you could use my help?
+                {this.props.c1}
                 <br/>
-                Send me a message.
+                {this.props.c2}
                 <br/>
-                <a id="msgme" href="mailto:koyo3.yomiko54@gmail.com"><button type="button" className="btn btn-info">&#9993; MESSAGE ME</button></a>
+                <a id="msgme" href="mailto:koyo3.yomiko54@gmail.com"><button type="button" className="btn btn-info">&#9993; {this.props.c3}</button></a>
                 </div>
             </div>
         );
@@ -235,7 +280,7 @@ class Slideshow extends React.Component {
                     }, 250, () => {
                         $('#what-thing').text('');
                         $('#what-thing').css({top:'15px'});
-                        $('#what-thing').text(thingArr[($(this).attr('data-key'))])
+                        $('#what-thing').text(localStorage['LANG']=='EN'?enThings[($(this).attr('data-key'))]:jpThings[($(this).attr('data-key'))])
                         .animate({top:'0'}, 250); 
                     });
                 }else if(attrName=='id'){
@@ -278,5 +323,4 @@ class Slideshow extends React.Component {
     );
 };
 };
-
 export {App};

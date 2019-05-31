@@ -1,16 +1,16 @@
 html, body {
     max-width: 100vw !important;
     overflow-x: hidden;
+    -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 1s; /* Firefox < 16 */
+    -ms-animation: fadein 1s; /* Internet Explorer */
+    -o-animation: fadein 1s; /* Opera < 12.1 */
+    animation: fadein 1s;
 }
 
-#intro {
-    height:300px;
-
-    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
-       -moz-animation: fadein 2s; /* Firefox < 16 */
-        -ms-animation: fadein 2s; /* Internet Explorer */
-         -o-animation: fadein 2s; /* Opera < 12.1 */
-            animation: fadein 2s;
+#change-language {
+    position:absolute;
+    z-index:1000;
 }
 
 #aboutme {
@@ -188,6 +188,15 @@ border-top: solid 5px transparent;
     padding-right: 4%;
 }
 
+.btn-lang {
+    font-size:18px;
+    color: black !important;
+}
+
+.btn-lang:hover {
+    color:blue !important;
+}
+
 /* Key frames */
 @keyframes fadein {
     from { opacity: 0; }
@@ -219,5 +228,5 @@ border-top: solid 5px transparent;
 }
 
 a {
-    text-decoration: none;
+    cursor:pointer;
 }

@@ -41,9 +41,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -56,35 +56,109 @@ var fadeProperties = {
   infinite: true,
   indicators: true
 };
-var thingArr = ['SPOOKY', 'COOL', 'WEIRD', 'COMFY', 'BLOODY'];
+var enThings = ['SPOOKY', 'COOL', 'WEIRD', 'COMFY', 'BLOODY'];
+var jpThings = ['怖い', 'オシャレ', '不気味', '心地いい', '血塗れ'];
+var enDict = {
+  a1: "I'm COYOMI (暦)",
+  a2: "An Illustrator from Japan.",
+  a3: "Currently living in Tokyo and finishing up College. I taught myself English by playing games and watching movies.",
+  a4: "(especially Tarantino and Marvel)",
+  a5: "...And I just really like to draw... things...",
+  mw1: "I can draw ",
+  mw2: enThings,
+  mw3: " things",
+  ms1: "SKILLS",
+  ms2: "Comics, posters and some web design. I'm always looking for freelance work or commissions.",
+  ms3: "(Also looking to get into 3D modeling / graphic design!)",
+  c1: "Think you could use my help?",
+  c2: "Send me a message.",
+  c3: "MESSAGE ME"
+};
+var jpDict = {
+  a1: "I'm COYOMI (暦)",
+  a2: "東京住み作者です。",
+  a3: "尚、美大学をやっている. ゲームや海外映画のお陰で英語を独学しました。",
+  a4: "(特にタランティーノとマーベル)",
+  a5: "...それと、絵を描くが好き",
+  mw1: "例えば、",
+  mw2: jpThings,
+  mw3: " 物も作れる",
+  ms1: "得意分野",
+  ms2: "コミック、ポスターと少しウェブデザイン。何時でもフリーランス仕事と依頼絵に頼んでいいです。",
+  ms3: "(グラフィックデザインもCGIも興味があります！)",
+  c1: "頼みがあると思いますか？",
+  c2: "メッセージ送ってね",
+  c3: "メッセージ送る"
+};
 
 var App =
 /*#__PURE__*/
 function (_React$Component) {
   _inherits(App, _React$Component);
 
-  function App() {
+  function App(props) {
+    var _this;
+
     _classCallCheck(this, App);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(App).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
+    _this.state = {
+      data: localStorage['LANG'] == 'EN' ? enDict : jpDict
+    };
+    _this.changeLang = _this.changeLang.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(App, [{
+    key: "changeLang",
+    value: function changeLang(e) {
+      localStorage['LANG'] = e;
+      this.setState(localStorage['LANG'] == 'EN' ? {
+        data: enDict
+      } : {
+        data: jpDict
+      });
+    }
+  }, {
+    key: "componentWillMount",
+    value: function componentWillMount() {}
+  }, {
     key: "render",
-    // May have issues with false
-    // Perhaps use null or empty str
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         // introContainer: false,
-    //         // introId: false,
-    //     };
-    // }
     value: function render() {
-      // if (this.state.isLoading) return (
-      //     <Intro introClass="row"/>
-      // );
-      return _react["default"].createElement(_react["default"].Fragment, null, _react["default"].createElement(AboutMe, null), _react["default"].createElement(MyWorks, null), _react["default"].createElement(MySkills, null), _react["default"].createElement(Contact, null), _react["default"].createElement(Footer, null));
+      var _this2 = this;
+
+      return _react["default"].createElement(_react["default"].Fragment, null, _react["default"].createElement("div", {
+        id: "change-language",
+        className: "bg-light"
+      }, _react["default"].createElement("a", {
+        className: "btn-lang",
+        onClick: function onClick() {
+          return _this2.changeLang('EN');
+        }
+      }, "EN"), _react["default"].createElement("span", null, "|"), _react["default"].createElement("a", {
+        className: "btn-lang",
+        onClick: function onClick() {
+          return _this2.changeLang('JP');
+        }
+      }, "JP")), _react["default"].createElement(AboutMe, {
+        a1: this.state.data.a1,
+        a2: this.state.data.a2,
+        a3: this.state.data.a3,
+        a4: this.state.data.a4,
+        a5: this.state.data.a5
+      }), _react["default"].createElement(MyWorks, {
+        mw1: this.state.data.mw1,
+        mw2: this.state.data.mw2,
+        mw3: this.state.data.mw3
+      }), _react["default"].createElement(MySkills, {
+        ms1: this.state.data.ms1,
+        ms2: this.state.data.ms2,
+        ms3: this.state.data.ms3
+      }), _react["default"].createElement(Contact, {
+        c1: this.state.data.c1,
+        c2: this.state.data.c2,
+        c3: this.state.data.c3
+      }), _react["default"].createElement(Footer, null));
     }
   }]);
 
@@ -147,15 +221,13 @@ function (_React$Component3) {
         className: "col card bg-aboutme-card text-center text-dark"
       }, _react["default"].createElement("h1", {
         className: "card-header"
-      }, _react["default"].createElement("strong", null, "I'm COYOMI (\u66A6)")), _react["default"].createElement("div", {
+      }, _react["default"].createElement("strong", null, this.props.a1)), _react["default"].createElement("div", {
         className: "card-body"
       }, _react["default"].createElement("h4", {
         className: "card-title"
-      }, "An Illustrator from Japan."), _react["default"].createElement("p", {
+      }, this.props.a2), _react["default"].createElement("p", {
         className: "thick-font"
-      }, "Currently living in Tokyo and finishing up College. I taught myself English by playing games and watching movies. ", _react["default"].createElement("small", {
-        className: ""
-      }, "(especially Tarantino and Marvel)"), _react["default"].createElement("br", null), "...And I just really like to draw... things..."))));
+      }, this.props.a3, _react["default"].createElement("small", null, this.props.a4), _react["default"].createElement("br", null), this.props.a5))));
     }
   }]);
 
@@ -185,12 +257,12 @@ function (_React$Component4) {
         className: "mx-auto row container p-2 d-flex justify-content-center"
       }, _react["default"].createElement("h6", {
         className: "text-nowrap bg-light border border-light rounded p-2"
-      }, "I can draw ", _react["default"].createElement("span", {
+      }, this.props.mw1, _react["default"].createElement("span", {
         id: "what-thing-container",
         className: "border rounded border-secondary text-center bg-dark text-white"
       }, _react["default"].createElement("span", {
         id: "what-thing"
-      }, "SPOOKY")), " things")), _react["default"].createElement("div", {
+      }, this.props.mw2[0])), this.props.mw3)), _react["default"].createElement("div", {
         id: "myworks-img",
         className: "row"
       }, _react["default"].createElement("div", {
@@ -213,28 +285,28 @@ function (_React$Component5) {
   _inherits(MySkills, _React$Component5);
 
   function MySkills(props) {
-    var _this;
+    var _this3;
 
     _classCallCheck(this, MySkills);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(MySkills).call(this, props));
-    _this.state = {
+    _this3 = _possibleConstructorReturn(this, _getPrototypeOf(MySkills).call(this, props));
+    _this3.state = {
       index: 0,
       skill: skillsArr[0]
     };
-    return _this;
+    return _this3;
   }
 
   _createClass(MySkills, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this2 = this;
+      var _this4 = this;
 
       this.intervalId = setInterval(function () {
         counter = counter < 4 ? counter + 1 : 0;
 
-        _this2.setState({
-          index: _this2.state.index < 4 ? _this2.state.index + 1 : 0,
+        _this4.setState({
+          index: _this4.state.index < 4 ? _this4.state.index + 1 : 0,
           skill: skillsArr[counter]
         });
       }, 3000);
@@ -257,11 +329,11 @@ function (_React$Component5) {
         id: "myskills-card"
       }, _react["default"].createElement("h4", {
         className: "text-dark"
-      }, _react["default"].createElement("strong", null, "SKILLS:")), _react["default"].createElement("div", {
+      }, _react["default"].createElement("strong", null, this.props.ms1)), _react["default"].createElement("div", {
         className: "card mx-2"
       }, _react["default"].createElement("p", {
         className: "text-dark"
-      }, "Comics, posters and some web design. I'm always looking for freelance work or commissions.", _react["default"].createElement("br", null), _react["default"].createElement("small", null, "(Also looking to get into 3D modeling / graphic design!)"))))), _react["default"].createElement("div", {
+      }, this.props.ms2, _react["default"].createElement("br", null), _react["default"].createElement("small", null, this.props.ms3))))), _react["default"].createElement("div", {
         id: "myskills-col",
         className: "col-6"
       }, _react["default"].createElement("div", {
@@ -299,13 +371,13 @@ function (_React$Component6) {
       }, _react["default"].createElement("div", {
         id: "contact-container",
         className: "card text-white text-center p-4"
-      }, "Think you could use my help?", _react["default"].createElement("br", null), "Send me a message.", _react["default"].createElement("br", null), _react["default"].createElement("a", {
+      }, this.props.c1, _react["default"].createElement("br", null), this.props.c2, _react["default"].createElement("br", null), _react["default"].createElement("a", {
         id: "msgme",
         href: "mailto:koyo3.yomiko54@gmail.com"
       }, _react["default"].createElement("button", {
         type: "button",
         className: "btn btn-info"
-      }, "\u2709 MESSAGE ME"))));
+      }, "\u2709 ", this.props.c3))));
     }
   }]);
 
@@ -386,7 +458,7 @@ function (_React$Component8) {
 
 
         (0, _jquery341Min["default"])('body *').attrchange(function (attrName) {
-          var _this3 = this;
+          var _this5 = this;
 
           if (attrName == 'class' && (0, _jquery341Min["default"])(this).hasClass('active')) {
             (0, _jquery341Min["default"])('#what-thing').animate({
@@ -396,7 +468,7 @@ function (_React$Component8) {
               (0, _jquery341Min["default"])('#what-thing').css({
                 top: '15px'
               });
-              (0, _jquery341Min["default"])('#what-thing').text(thingArr[(0, _jquery341Min["default"])(_this3).attr('data-key')]).animate({
+              (0, _jquery341Min["default"])('#what-thing').text(localStorage['LANG'] == 'EN' ? enThings[(0, _jquery341Min["default"])(_this5).attr('data-key')] : jpThings[(0, _jquery341Min["default"])(_this5).attr('data-key')]).animate({
                 top: '0'
               }, 250);
             });
