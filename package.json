@@ -1,6 +1,6 @@
 {
   "name": "coyomi.m",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Koyomi portfolio site",
   "main": "dist/index.js",
   "dependencies": {
@@ -17,6 +17,8 @@
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
     "css-loader": "^2.1.1",
+    "file-loader": "^3.0.1",
+    "image-webpack-loader": "^4.6.0",
     "react-slideshow-image": "^1.1.8",
     "style-loader": "^0.23.1",
     "webpack": "^4.32.2",
@@ -38,8 +40,8 @@
   "author": "",
   "license": "ISC",
   "peerDependencies": {
-    "react": "^16.3.0",
-    "react-dom": "^16.3.0"
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   },
   "bugs": {
     "url": "https://bugster10.github.io/coyomi.m/issues"
